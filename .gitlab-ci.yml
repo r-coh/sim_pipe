@@ -33,4 +33,4 @@ test:
     stage: test
     script: 
         - echo "Testing"
-        - test -f "build/indo.text"
+        - test -f "build/indo.txt"
