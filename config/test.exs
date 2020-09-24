@@ -8,3 +8,16 @@ config :sim_pipe, SimPipeWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Configure the database for local testing
+config :app, App.Repo,
+  database: "my_app_test",
+  hostname: "localhost",
+  pool: Ecto.Adapters.SQL.Sandbox
+
+# Configure the database for GitHub Actions
+if System.get_env("GITHUB_ACTIONS") do
+  config :app, App.Repo,
+    username: "postgres",
+    password: "postgres"
+end
